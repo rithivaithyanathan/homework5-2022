@@ -1,0 +1,160 @@
+/* Animate the logo, set amimation settings in #logo then fix sizing of animation w keyframes */
+/* Animation takes 5 seconds and reanimates when browser refreshes */
+#logo {
+    animation-duration: 5s;
+    animation-name: logo;
+    animation-iteration-count: 1;
+}
+
+@keyframes logo {
+    0% {
+      width:25px; 
+      opacity: 0;
+    }
+    100% { 
+      width: 475px; 
+      opacity: 1;}
+}
+
+/* Setting up default view of page */
+body {
+	font-family: 'Poppins', serif;
+	background: url(../images/concrete_seamless.png);
+	background-color: #f1f1f1;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Editing navigation links, using flex classes */
+.nav_links {
+	display: flex;
+	flex-direction: column;
+    color: blue;
+}
+
+/* Challenge Problem, ensure navigation links stay the same color after they've been visited */
+.nav_links li a:visited {
+	color: blue;
+}
+
+/* Styling for Pricing Cards in Middle of Page */ 
+/* Using flex class to set card styles */
+.card > header { 
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 50px 50px 0px 0px;
+}
+
+.card {
+	border-radius: 50px 50px 0 0;
+	flex-basis: 450px;
+}
+
+.pricing {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Styling for Gallery at Bottom of Page */
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px 10px 10px 10px;
+    width: 300px
+}
+
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px 10px 10px 10px;
+    width: 300px
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+    flex-direction: row;
+}
+
+/* Media Query for Screens Greater Than 900px */
+/* Editing header, navigation, and body to match example */ 
+@media screen and (min-width: 900px) {
+	header, .nav_links {
+		display: flex;
+        justify-content: space-between;
+		align-items: center;
+		flex-direction: row;
+	}
+	
+	.pricing {
+		flex-basis: 275px;
+	}
+
+    .card {
+        flex-basis: 275px;
+    }
+
+    /*Ensure header stays on page, even when user scrolls */ 
+	body > header {
+		position: sticky;
+		top: 0;
+	}
+ }
+
+ /* Media Query for Reduced Motion, No Motion Occurs */
+ @media screen and (prefers-reduced-motion: reduce) {
+	#logo {
+		animation: none;
+	}
+ }
+
+ /* Media Query for Potrait Mode */
+ @media print {
+    /* removing background image */ 
+	body {
+		font-family: Arial, Helvetica;
+		background-image: none;
+ 	}
+    
+    /* changing positioning */
+	nav {
+		width: 100%;
+	}
+
+	.nav_links {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-around;
+	}
+
+    /* aligning pricing with the bottom of the screen */
+	.pricing {
+		display: flex;
+		align-items: flex-end;
+		flex-wrap: nowrap;
+	}
+
+    /* gallery no longer visible */
+    #gallery, .gallery {
+		display: none;
+	}
+
+	.card {
+		border: solid 2px #45ADDD;
+		flex-basis: 325px;
+	}
+
+    /* Challenge: Adding Thumbs Up */
+	.pricing li:nth-child(2)::after {
+        content: "👍";
+    }
+ }
